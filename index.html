@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | ResourcesHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-body">
+
+    <div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+    <header>
+        <div class="brand">
+            <i class="fas fa-layer-group" style="color: var(--primary);"></i> 
+            <span>ResourcesHub</span>
+        </div>
+        
+        <nav class="desktop-nav">
+            <a href="./" class="active">Home</a>
+            <a href="./resources">Resources</a>
+            <a href="./contribute">Contribute</a>
+            <a href="./#footer">About Us</a>
+        </nav>
+
+        <div class="header-actions">
+            <div class="user-pill"><i class="fas fa-user-circle"></i> Student</div>
+            <button class="hamburger-btn" aria-label="Toggle Menu" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="brand">Menu</span>
+            <button onclick="toggleMobileMenu()"><i class="fas fa-times"></i></button>
+        </div>
+        <a href="./" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="./resources"><i class="fas fa-book-open"></i> Resources</a>
+        <a href="./contribute"><i class="fas fa-upload"></i> Contribute</a>
+        <a href="./#footer"><i class="fas fa-info-circle"></i> About Us</a>
+    </div>
+
+    <div class="container center-layout home-hero-container">
+        <div class="hero">
+            <div class="badge-pill">🚀 Designed for Future Developers</div>
+            <h1>Master Your Syllabus.<br><span class="gradient-text">Ace Your Future.</span></h1>
+            <p class="hero-sub">Access 1,200+ solved papers, code snippets, and books shared by top students.</p>
+            
+            <div class="search-hero-wrapper">
+                <div class="search-hero">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="homeSearchInput" placeholder="Try 'Basic Electronics' or 'Java'..." aria-label="Search resources">
+                    <button onclick="performHomeSearch()">Search</button>
+                </div>
+                <div class="hero-cta-group">
+                    <span class="or-divider">or</span>
+                    <a href="./resources" class="btn-secondary">Browse All Resources</a>
+                </div>
+            </div>
+
+            <h3 class="section-header-center">Explore Categories</h3>
+            <div class="dashboard-grid center-grid">
+                <a href="resources.html?cat=all" class="stat-card hover-card">
+                    <div class="icon-box bg-gray"><i class="fa-solid fa-border-all"></i></div>
+                    <h4>All</h4>
+                </a>
+                <a href="resources.html?cat=Book" class="stat-card hover-card">
+                    <div class="icon-box bg-red"><i class="fas fa-book"></i></div>
+                    <h4>Books</h4>
+                </a>
+                <a href="resources.html?cat=Paper" class="stat-card hover-card">
+                    <div class="icon-box bg-orange"><i class="fas fa-file-alt"></i></div>
+                    <h4>Papers</h4>
+                </a>
+                <a href="resources.html?cat=C%2B%2B" class="stat-card hover-card">
+                    <div class="icon-box bg-teal"><i class="fas fa-code"></i></div>
+                    <h4>Coding</h4>
+                </a>
+                <a href="./resources.html?cat=Electronics" class="stat-card hover-card">
+                    <div class="icon-box bg-blue"><i class="fas fa-microchip"></i></div>
+                    <h4>Electronics</h4>
+                </a>
+                <a href="./resources.html?cat=SQL" class="stat-card hover-card">
+                    <div class="icon-box bg-purple"><i class="fas fa-database"></i></div>
+                    <h4>Database</h4>
+                </a>
+                <a href="resources.html?sem=1" class="stat-card hover-card">
+                    <div class="icon-box bg-emerald">
+                    <i class="fas fa-graduation-cap"></i></div>
+                    <h4>Sem 1</h4>
+                </a>
+                <a href="resources.html?sem=2" class="stat-card hover-card">
+                    <div class="icon-box bg-rose">
+                    <i class="fas fa-calendar-days"></i></div>
+                    <h4>Sem 2</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="modern-footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <h5>-Developed By</h5>
+                <div class="logo">Phoenix<span class="highlight">Studio</span>.</div>
+                <p class="bio">
+                    Open-source educational resources for computer science students. Built with <i class="fas fa-heart" style="color:#e11d48;"></i> and code.
+                </p>
+                <a href="https://wa.link/nazmb6" class="btn-contact">Get in Touch <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="footer-col platform">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="./resources">Browse Library</a></li>
+                    <li><a href="./contribute">Upload Notes</a></li>
+                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="#">API Access</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col review-col">
+                <h4>Feedback</h4>
+                <div class="review-form-card">
+                    <form action="#" onsubmit="event.preventDefault(); alert('Thank You For Your Valuable Feedback !!');">
+                        <div class="star-rating">
+                            <input type="radio" name="rating" id="star5" value="5"><label for="star5" title="Excellent"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="rating" id="star4" value="4"><label for="star4" title="Good"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="rating" id="star3" value="3"><label for="star3" title="Average"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="rating" id="star2" value="2"><label for="star2" title="Poor"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="rating" id="star1" value="1"><label for="star1" title="Bad"><i class="fas fa-star"></i></label>
+                        </div>
+                        <textarea placeholder="How can we improve?" required></textarea>
+                        <button type="submit" class="btn-submit">Send Feedback <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-col social-col">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="https://discord.com/users/1458341482875457568" class="social-btn discord"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.linkedin.com/in/aditya688" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/aditya-godase" class="social-btn github"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="copyright">© 2025 ResourcesHub. GitHub Licence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

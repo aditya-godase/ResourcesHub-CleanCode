@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | ResourcesHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+    <header>
+        <div class="brand">
+            <i class="fas fa-layer-group" style="color: var(--primary);"></i> 
+            <span>ResourcesHub</span>
+        </div>
+        <nav class="desktop-nav">
+            <a href="./">Home</a>
+            <a href="./resources" class="active">Resources</a>
+            <a href="./contribute">Contribute</a>
+            <a href="./#footer">About Us</a>
+        </nav>
+        <div class="header-actions">
+            <div class="user-pill"><i class="fas fa-user-circle"></i> Student</div>
+            <button class="hamburger-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="brand">Menu</span>
+            <button onclick="toggleMobileMenu()"><i class="fas fa-times"></i></button>
+        </div>
+        <a href="./"><i class="fas fa-home"></i> Home</a>
+        <a href="./resources" class="active"><i class="fas fa-book-open"></i> Resources</a>
+        <a href="./contribute"><i class="fas fa-upload"></i> Contribute</a>
+        <a href="./#footer"><i class="fas fa-info-circle"></i> About Us</a>
+    </div>
+
+    <div class="container main-layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-sticky">
+                <div class="filter-group">
+                    <h3><i class="fas fa-filter"></i> Filters</h3>
+
+                    <div class="input-group">
+                        <label align="center">Semester</label>
+                        <div class="select-wrapper">
+                            <select id="semFilter" onchange="updateSubjects()">
+                                <option value="all">All Semesters</option>
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                            </select>
+                            <i class="fas fa-chevron-down custom-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label align="center">Subject</label>
+                        <div class="select-wrapper">
+                            <select id="subjectFilter" onchange="filterResources()">
+                                <option value="all">All Subjects</option>
+                            </select>
+                            <i class="fas fa-chevron-down custom-arrow"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-widget">
+                    <div class="widget-header">
+                        <span id="widgetTitle"><i class="fas fa-lightbulb text-yellow"></i> Daily Snippet</span>
+
+                        <div style="display: flex; gap: 10px;">
+                            <button id="desktopDownloadBtn" class="copy-btn-mini"
+                                onclick="handleDownload(this, 'sidebarCodeBlock')" title="Download File">
+                                <i class="fas fa-download"></i>
+                            </button>
+
+                            <button class="copy-btn-mini" onclick="handleCopy(this, 'sidebarCodeBlock')"
+                                title="Copy Code">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-scroll-area">
+<pre><code id="sidebarCodeBlock" class="language-c">/* WELCOME TO THE CODE LIBRARY!
+   ============================
+1. Browse the "Coding"
+    resources in the grid.
+2. Click the "View Code"
+    button on any card.
+3. The source code will 
+    appear right here.
+
+//    You can also:
+-> Click the Copy icon 
+    to paste it elsewhere.
+-> Click the Download icon 
+    to save the file. */
+
+#include &lt;stdio.h&gt;
+
+    int main() {
+        printf("Happy Coding!");
+        return 0;
+    }
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <div class="page-header">
+                <div class="header-content">
+                    <h1>Study Resources</h1>
+                    <p>Curated materials for your success.</p>
+                </div>
+                <div class="search-bar-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by title or tag..."
+                        onkeyup="filterResources()">
+                </div>
+            </div>
+
+            <div class="category-pills">
+                <button class="pill active" onclick="setCategory('all', this)">All</button>
+                <button class="pill" onclick="setCategory('Book', this)">Books</button>
+                <button class="pill" onclick="setCategory('Paper', this)">Papers</button>
+                <button class="pill" onclick="setCategory('C++', this)">C++</button>
+                <button class="pill" onclick="setCategory('SQL', this)">SQL</button>
+                <button class="pill" onclick="setCategory('Electronics', this)">Electronics</button>
+                <button class="pill" onclick="setCategory('Python', this)">Python</button>
+                <button class="pill" onclick="setCategory('Java', this)">Java</button>
+            </div>
+
+            <div id="resourceGrid" class="resource-grid">
+            </div>
+        </main>
+    </div>
+
+    <div class="center-code" id="codeAction">
+        <div class="code-widget mobile-widget-style">
+            <div class="widget-header">
+                <span id="mobileWidgetTitle"
+                    style="max-width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    <i class="fas fa-lightbulb text-yellow"></i> Daily Snippet
+                </span>
+
+                <div style="display: flex; gap: 12px;">
+                    <button id="mobileDownloadBtn" class="copy-btn-mini"
+                        onclick="handleDownload(this, 'mobileCodeBlock')" title="Download File">
+                        <i class="fas fa-download"></i>
+                    </button>
+
+                    <button class="copy-btn-mini" onclick="handleCopy(this, 'mobileCodeBlock')" title="Copy Code">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="m-code-scroll-area">
+                <pre><code id="mobileCodeBlock" class="language-javascript">// Code will appear here...</code></pre>
+            </div>
+        </div>
+
+        <button class="close-button" aria-label="Close" onclick="hideElement()">
+            <i class="fa fa-times-circle"></i>
+        </button>
+    </div>
+
+    <div id="toast" class="toast">
+        <i class="fas fa-info-circle"></i> <span id="toastMsg">Notification...</span>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

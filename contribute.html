@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribute | ResourcesHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+    <header>
+        <div class="brand">
+            <i class="fas fa-layer-group" style="color: var(--primary);"></i> 
+            <span>ResourcesHub</span>
+        </div>
+            <a href="./">Home</a>
+            <a href="./resources">Resources</a>
+            <a href="./contribute" class="active">Contribute</a>
+            <a href="./#footer">About Us</a>
+        </nav>
+        <div class="header-actions">
+            <div class="user-pill"><i class="fas fa-user-circle"></i> Student</div>
+            <button class="hamburger-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="brand">Menu</span>
+            <button onclick="toggleMobileMenu()"><i class="fas fa-times"></i></button>
+        </div>
+        <a href="./"><i class="fas fa-home"></i> Home</a>
+        <a href="./resources"><i class="fas fa-book-open"></i> Resources</a>
+        <a href="./contribute" class="active"><i class="fas fa-upload"></i> Contribute</a>
+        <a href="./#footer"><i class="fas fa-info-circle"></i> About Us</a>
+    </div>
+
+    <div class="container center-layout">
+        <div class="upload-card">
+            <div class="upload-header">
+                <h3 style="color: darkgray;">Currently Disabled (In Development)</h3>
+                <h2>Upload Resource</h2>
+                <p>Share knowledge with the community and earn <strong>+50 Reputation</strong>.</p>
+            </div>
+
+            <form onsubmit="handleUpload(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Resource Title</label>
+                        <input type="text" placeholder="e.g. Data Structures Unit 1 Notes" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <div class="select-wrapper">
+                            <select required>
+                                <option value="" disabled selected>Select Type</option>
+                                <option>Notes / Book</option>
+                                <option>Question Paper</option>
+                                <option>Code Snippet</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description (Optional)</label>
+                    <textarea rows="4" placeholder="Brief details about this resource..."></textarea>
+                </div>
+
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h4>Drag & Drop files here</h4>
+                        <p>or <span class="browse-link">Browse Files</span></p>
+                    </div>
+                    <input type="file" id="fileInput" hidden>
+                </div>
+
+                <button type="submit" class="btn-primary full-width">
+                    Submit Resource <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
